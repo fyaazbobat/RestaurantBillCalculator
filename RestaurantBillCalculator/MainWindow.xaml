@@ -1,0 +1,92 @@
+﻿<Window x:Class="RestaurantBillCalculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RestaurantBillCalculator"
+        mc:Ignorable="d"
+        Title="Menu Calculator" Height="550" Width="800">
+    <Window.Resources>
+        <CollectionViewSource x:Key="MenuViewSourse" 
+                              d:DesignSource="{d:DesignInstance {x:Type local:Menu}, CreateList=True}"></CollectionViewSource>
+    </Window.Resources>
+    <Grid x:Name="TBoxTotal" DataContext="{StaticResource MenuViewSourse}">
+        <ComboBox x:Name="CBoxBeverage" HorizontalAlignment="Left" Margin="192,50,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="CBoxBeverage_SelectionChanged">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock  Text="{Binding Name}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <ComboBox x:Name="CBoxAppetizer" HorizontalAlignment="Left" Margin="336,50,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="CBoxAppetizer_SelectionChanged">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock  Text="{Binding Name}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <ComboBox x:Name="CBoxDessert" HorizontalAlignment="Left" Margin="498,50,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="CBoxDessert_SelectionChanged">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock  Text="{Binding Name}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <ComboBox x:Name="CBoxMainDish" HorizontalAlignment="Left" Margin="649,50,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="CBoxMainDish_SelectionChanged">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock  Text="{Binding Name}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <DataGrid x:Name="OrderList" HorizontalAlignment="Left" Height="288" Margin="10,113,0,0" VerticalAlignment="Top" Width="446" SelectionChanged="OrderList_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="nameColumn"
+                                    Header="Name"
+                                    Binding="{Binding Name}"
+                                    Width="*"
+                                    IsReadOnly="true" />
+                <DataGridTextColumn x:Name="categoryColumn"
+                                    Header="Category"
+                                    Binding="{Binding Category}"
+                                    Width="*"
+                                    IsReadOnly="true" />
+                <DataGridTextColumn x:Name="priceColumn"
+                                    Header="Price"
+                                    Binding="{Binding Price}"
+                                    Width="*"
+                                    IsReadOnly="true" />
+                <DataGridTextColumn x:Name="quantityColumn"
+                                    Binding="{Binding Quantity}"
+                                    Header="Quantity"
+                                    Width="*" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="picLink" Height="80" Width="162" Margin="10,10,620,429" Click="picLink_Click">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image x:Name="imgLogo" Source="Centennial_Img.png"/>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Label Content="Beverage" HorizontalAlignment="Left" Margin="218,19,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.026,-0.673" Width="68"/>
+        <Label Content="Appetizer" HorizontalAlignment="Left" Margin="364,23,0,0" VerticalAlignment="Top" Width="64"/>
+        <Label Content="Dessert" HorizontalAlignment="Left" Margin="531,23,0,0" VerticalAlignment="Top" Width="58"/>
+        <Label Content="Main Course" HorizontalAlignment="Left" Margin="668,23,0,0" VerticalAlignment="Top" Width="82"/>
+        <TextBox x:Name="TBoxSubTotal" HorizontalAlignment="Left" Height="22" Margin="630,268,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TBoxTax" HorizontalAlignment="Left" Height="24" Margin="630,322,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TBoxTotally" HorizontalAlignment="Left" Height="22" Margin="630,379,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="SubTotal" HorizontalAlignment="Left" Margin="560,264,0,0" VerticalAlignment="Top" Width="58"/>
+        <Label Content="Tax" HorizontalAlignment="Left" Margin="561,320,0,0" VerticalAlignment="Top" Width="58"/>
+        <Label Content="Total" HorizontalAlignment="Left" Margin="562,366,0,0" VerticalAlignment="Top" Height="35" Width="57"/>
+        <Label Content="Fyaaz Bobat" HorizontalAlignment="Left" Margin="70,466,0,0" VerticalAlignment="Top" Width="78"/>
+    </Grid>
+</Window>
